@@ -1,0 +1,17 @@
+
+<% content_for :page_actions do %>
+<div style ="float:left">
+  <h1> New Category </h1>
+</div>
+<% end %>
+
+<%= form_for [:admin, @taxonomy] do |f| %>
+
+  <%= render :partial => 'form', :locals => { :f => f } %>
+  <fieldset class="no-border-top">
+    <br>
+    <div class="filter-actions actions" data-hook="buttons">
+      <%= button Spree.t('actions.create') %>
+    </div>
+  </fieldset>
+<% end %>

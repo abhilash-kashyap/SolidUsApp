@@ -1,0 +1,22 @@
+<% content_for :page_actions do %>
+<div style ="float:left">
+  <h1>Categories </h1>
+</div>
+  <% if can?(:create, Spree::Taxonomy) %>
+    <li>
+      <%= button_link_to  Spree.t(:new_category), spree.new_admin_taxonomy_url, :id => 'admin_new_taxonomy_link' %>
+    </li>
+  <% end %>
+<% end %>
+
+<% if @taxonomies.any? %>
+<div id="list-taxonomies" data-hook>
+  <%= render 'list' %>
+</div>
+<% else %>
+  <div class="alpha twelve columns no-objects-found">
+    <%= render 'spree/admin/shared/no_objects_found',
+                 resource: Spree::Taxonomy,
+                 new_resource_url: new_object_url %>
+  </div>
+  <%end%>
